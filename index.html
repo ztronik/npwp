@@ -36,6 +36,11 @@
         input[type="text"]:focus { outline: none; border-color: var(--djp-blue-light); background-color: #ffffff; box-shadow: 0 0 0 4px rgba(0, 74, 153, 0.1); }
         #nik { font-weight: bold; letter-spacing: 1px; color: var(--djp-blue-dark); }
 
+        /* Grid layout untuk kolom alamat */
+        .alamat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 18px; }
+        .alamat-grid .form-group { margin-bottom: 0; }
+        .alamat-grid .full-width { grid-column: 1 / -1; }
+
         .btn-reset { width: 100%; padding: 13px; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; background: linear-gradient(45deg, var(--djp-orange) 0%, var(--djp-yellow) 100%); color: white; transition: 0.3s; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 10px rgba(243, 112, 33, 0.3); }
         .btn-reset:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 6px 15px rgba(243, 112, 33, 0.4); }
 
@@ -91,7 +96,7 @@
             100% { box-shadow: 0 0 0 0 rgba(243, 112, 33, 0); }
         }
 
-        /* --- STYLING COPYRIGHT Z-TRONIK --- */
+        /* --- STYLING FOOTER Z-TRONIK --- */
         .footer-note { font-size: 13px; color: var(--djp-blue-dark); margin-top: auto; text-align: center; padding: 20px; line-height: 1.6; opacity: 0.85; }
         .footer-note span.z-tronik-brand { font-weight: bold; color: var(--djp-orange); letter-spacing: 1px; }
         .footer-links { margin-top: 8px; font-size: 12px; }
@@ -140,31 +145,60 @@
     <div class="logo-pajak-header" id="logo-placeholder">
         <span style="font-family: 'Times New Roman', serif; transform: scaleX(1.2);">P</span>
     </div>
-    <h1 class="main-title">Data Kartu NPWP</h1>
+    <h1 class="main-title">Form NPWP</h1>
 </div>
 
 <div class="container">
     <form id="npwpForm">
         <div class="form-group">
-            <label for="nik">NIK / NPWP (16 Digit Angka) *</label>
-            <input type="text" id="nik" placeholder="Contoh: 3603075..." maxlength="16" oninput="validateNIK(this)">
+            <label for="nik">NIK / NPWP (16 Digit Angka)</label>
+            <input type="text" id="nik" placeholder="Contoh: 360307..........." maxlength="16" oninput="validateNIK(this)">
             <small id="nik-error">⚠️ NIK harus terdiri dari 16 digit angka!</small>
         </div>
         <div class="form-group">
             <label for="nama">Nama Wajib Pajak</label>
             <input type="text" id="nama" placeholder="Masukkan Nama Lengkap" oninput="this.value = this.value.toUpperCase(); updatePreview()">
         </div>
-        <div class="form-group">
-            <label for="alamat">Alamat Lengkap</label>
-            <input type="text" id="alamat" placeholder="Nama Jalan, RT/RW, Kelurahan, Kecamatan, Kab/Kota, Provinsi" oninput="this.value = this.value.toUpperCase(); updatePreview()">
+
+        <!-- Grid Alamat Multi-Kolom -->
+        <div class="alamat-grid">
+            <div class="form-group full-width">
+                <label for="jalan">Nama Jalan / Kampung</label>
+                <input type="text" id="jalan" placeholder="Masukkan Nama Jalan / Kampung" oninput="this.value = this.value.toUpperCase(); updatePreview()">
+            </div>
+            <div class="form-group">
+                <label for="rt">Nomor RT</label>
+                <input type="text" id="rt" placeholder="Contoh : 001" oninput="this.value = this.value.toUpperCase(); updatePreview()">
+            </div>
+            <div class="form-group">
+                <label for="rw">Nomor RW</label>
+                <input type="text" id="rw" placeholder="Contoh : 002" oninput="this.value = this.value.toUpperCase(); updatePreview()">
+            </div>
+            <div class="form-group">
+                <label for="kelurahan">Nama Kelurahan</label>
+                <input type="text" id="kelurahan" placeholder="Masukkan Nama Kelurahan" oninput="this.value = this.value.toUpperCase(); updatePreview()">
+            </div>
+            <div class="form-group">
+                <label for="kecamatan">Nama Kecamatan</label>
+                <input type="text" id="kecamatan" placeholder="Masukkan Nama Kecamatan" oninput="this.value = this.value.toUpperCase(); updatePreview()">
+            </div>
+            <div class="form-group">
+                <label for="kabupaten">Nama Kabupaten / Kota</label>
+                <input type="text" id="kabupaten" placeholder="Masukkan Nama Kab/Kota" oninput="this.value = this.value.toUpperCase(); updatePreview()">
+            </div>
+            <div class="form-group">
+                <label for="provinsi">Nama Provinsi</label>
+                <input type="text" id="provinsi" placeholder="Masukkan Nama Provinsi" oninput="this.value = this.value.toUpperCase(); updatePreview()">
+            </div>
         </div>
+
         <div class="form-group">
             <label for="kpp">KPP Terdaftar</label>
-            <input type="text" id="kpp" placeholder="Contoh: KANTOR PELAYANAN PAJAK PRATAMA KOSAMBI" oninput="this.value = this.value.toUpperCase(); updatePreview()">
+            <input type="text" id="kpp" placeholder="Contoh: KOSAMBI" oninput="this.value = this.value.toUpperCase(); updatePreview()">
         </div>
         <div class="form-group">
             <label for="tanggal">Tanggal Terdaftar</label>
-            <input type="text" id="tanggal" placeholder="DD/MM/YYYY" maxlength="10" oninput="formatTanggal(this)">
+            <input type="text" id="tanggal" placeholder="Masukkan Tanggal Terdaftar" maxlength="10" oninput="formatTanggal(this)">
             <small id="tanggal-error">⚠️ Format tanggal tidak valid! (cek hari, bulan, atau tahun)</small>
         </div>
 
@@ -203,9 +237,8 @@
 </div>
 
 <div class="footer-note">
-    &copy; 2026 <span class="z-tronik-brand">Z-TRONIK</span>. All Rights Reserved<br>
-    <div class="footer-links">
-    </div>
+    Aplikasi Generator Kartu NPWP dengan teknologi terkini.<br>
+    Dikembangkan oleh <span class="z-tronik-brand">Z-TRONIK</span>
 </div>
 
 <script>
@@ -255,7 +288,13 @@
     function isFormValid() {
         const nik = document.getElementById('nik').value.trim();
         const nama = document.getElementById('nama').value.trim();
-        const alamat = document.getElementById('alamat').value.trim();
+        const jalan = document.getElementById('jalan').value.trim();
+        const rt = document.getElementById('rt').value.trim();
+        const rw = document.getElementById('rw').value.trim();
+        const kelurahan = document.getElementById('kelurahan').value.trim();
+        const kecamatan = document.getElementById('kecamatan').value.trim();
+        const kabupaten = document.getElementById('kabupaten').value.trim();
+        const provinsi = document.getElementById('provinsi').value.trim();
         const kpp = document.getElementById('kpp').value.trim();
         const tanggal = document.getElementById('tanggal').value.trim();
 
@@ -265,8 +304,8 @@
         // Cek nama (tidak boleh kosong)
         if (nama === '') return false;
 
-        // Cek alamat (tidak boleh kosong)
-        if (alamat === '') return false;
+        // Cek semua komponen alamat (tidak boleh kosong)
+        if (jalan === '' || rt === '' || rw === '' || kelurahan === '' || kecamatan === '' || kabupaten === '' || provinsi === '') return false;
 
         // Cek KPP (tidak boleh kosong)
         if (kpp === '') return false;
@@ -355,7 +394,13 @@
     function updatePreview() {
         var nik = document.getElementById("nik").value;
         var nama = document.getElementById("nama").value;
-        var alamat = document.getElementById("alamat").value;
+        var jalan = document.getElementById("jalan").value;
+        var rt = document.getElementById("rt").value;
+        var rw = document.getElementById("rw").value;
+        var kelurahan = document.getElementById("kelurahan").value;
+        var kecamatan = document.getElementById("kecamatan").value;
+        var kabupaten = document.getElementById("kabupaten").value;
+        var provinsi = document.getElementById("provinsi").value;
         var kpp = document.getElementById("kpp").value;
         var tanggal = document.getElementById("tanggal").value;
 
@@ -368,8 +413,25 @@
         }
 
         document.getElementById("out-nama").innerText = nama ? nama.toUpperCase() : "";
-        document.getElementById("out-alamat").innerText = alamat ? alamat.toUpperCase() : "";
-        document.getElementById("out-kpp").innerText = kpp ? kpp.toUpperCase() : "";
+        
+        // Gabungkan semua komponen alamat
+        var alamatLengkap = [];
+        if (jalan.trim() !== "") alamatLengkap.push(jalan.toUpperCase());
+        
+        // Gabungkan RT dan RW dengan spasi, tanpa koma
+        var rtRw = "";
+        if (rt.trim() !== "") rtRw += "RT " + rt.toUpperCase();
+        if (rw.trim() !== "") rtRw += (rtRw ? " " : "") + "RW " + rw.toUpperCase();
+        if (rtRw.trim() !== "") alamatLengkap.push(rtRw);
+        
+        if (kelurahan.trim() !== "") alamatLengkap.push(kelurahan.toUpperCase());
+        if (kecamatan.trim() !== "") alamatLengkap.push(kecamatan.toUpperCase());
+        if (kabupaten.trim() !== "") alamatLengkap.push(kabupaten.toUpperCase());
+        if (provinsi.trim() !== "") alamatLengkap.push(provinsi.toUpperCase());
+        
+        document.getElementById("out-alamat").innerText = alamatLengkap.join(", ");
+        
+        document.getElementById("out-kpp").innerText = kpp ? "KANTOR PELAYANAN PAJAK PRATAMA " + kpp.toUpperCase() : "";
         document.getElementById("out-tanggal").innerText = tanggal ? "TANGGAL TERDAFTAR " + tanggal.toUpperCase() : "";
 
         // --- SISTEM QR CODE YANG STABIL ---
