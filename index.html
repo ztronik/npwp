@@ -145,7 +145,7 @@
     <div class="logo-pajak-header" id="logo-placeholder">
         <span style="font-family: 'Times New Roman', serif; transform: scaleX(1.2);">P</span>
     </div>
-    <h1 class="main-title">Form NPWP</h1>
+    <h1 class="main-title">Form Wajib Pajak</h1>
 </div>
 
 <div class="container">
@@ -414,22 +414,22 @@
 
         document.getElementById("out-nama").innerText = nama ? nama.toUpperCase() : "";
         
-        // Gabungkan semua komponen alamat
-        var alamatLengkap = [];
-        if (jalan.trim() !== "") alamatLengkap.push(jalan.toUpperCase());
-        
-        // Gabungkan RT dan RW dengan spasi, tanpa koma
-        var rtRw = "";
-        if (rt.trim() !== "") rtRw += "RT " + rt.toUpperCase();
-        if (rw.trim() !== "") rtRw += (rtRw ? " " : "") + "RW " + rw.toUpperCase();
-        if (rtRw.trim() !== "") alamatLengkap.push(rtRw);
-        
-        if (kelurahan.trim() !== "") alamatLengkap.push(kelurahan.toUpperCase());
-        if (kecamatan.trim() !== "") alamatLengkap.push(kecamatan.toUpperCase());
-        if (kabupaten.trim() !== "") alamatLengkap.push(kabupaten.toUpperCase());
-        if (provinsi.trim() !== "") alamatLengkap.push(provinsi.toUpperCase());
-        
-        document.getElementById("out-alamat").innerText = alamatLengkap.join(", ");
+		// Gabungkan semua komponen alamat
+		var alamatLengkap = [];
+		var barisAwal = "";
+
+		if (jalan.trim() !== "") barisAwal += jalan.toUpperCase();
+		if (rt.trim() !== "") barisAwal += " RT. " + rt.toUpperCase();
+		if (rw.trim() !== "") barisAwal += " RW. " + rw.toUpperCase();
+
+		if (barisAwal.trim() !== "") alamatLengkap.push(barisAwal);
+
+		if (kelurahan.trim() !== "") alamatLengkap.push(kelurahan.toUpperCase());
+		if (kecamatan.trim() !== "") alamatLengkap.push(kecamatan.toUpperCase());
+		if (kabupaten.trim() !== "") alamatLengkap.push(kabupaten.toUpperCase());
+		if (provinsi.trim() !== "") alamatLengkap.push(provinsi.toUpperCase());
+
+		document.getElementById("out-alamat").innerText = alamatLengkap.join(", ");
         
         document.getElementById("out-kpp").innerText = kpp ? "KANTOR PELAYANAN PAJAK PRATAMA " + kpp.toUpperCase() : "";
         document.getElementById("out-tanggal").innerText = tanggal ? "TANGGAL TERDAFTAR " + tanggal.toUpperCase() : "";
