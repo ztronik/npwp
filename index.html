@@ -152,7 +152,7 @@
     <form id="npwpForm">
         <div class="form-group">
             <label for="nik">NIK / NPWP (16 Digit Angka)</label>
-            <input type="text" id="nik" placeholder="Contoh: 360307..........." maxlength="16" oninput="validateNIK(this)">
+            <input type="text" id="nik" placeholder="Contoh: 3603071234567890" maxlength="16" oninput="validateNIK(this)">
             <small id="nik-error">⚠️ NIK harus terdiri dari 16 digit angka!</small>
         </div>
         <div class="form-group">
@@ -182,11 +182,11 @@
                 <label for="kecamatan">Nama Kecamatan</label>
                 <input type="text" id="kecamatan" placeholder="Masukkan Nama Kecamatan" oninput="this.value = this.value.toUpperCase(); updatePreview()">
             </div>
-            <div class="form-group">
+            <div class="form-group full-width">
                 <label for="kabupaten">Nama Kabupaten / Kota</label>
                 <input type="text" id="kabupaten" placeholder="Masukkan Nama Kab/Kota" oninput="this.value = this.value.toUpperCase(); updatePreview()">
             </div>
-            <div class="form-group">
+            <div class="form-group full-width">
                 <label for="provinsi">Nama Provinsi</label>
                 <input type="text" id="provinsi" placeholder="Masukkan Nama Provinsi" oninput="this.value = this.value.toUpperCase(); updatePreview()">
             </div>
