@@ -152,7 +152,7 @@
     <form id="npwpForm">
         <div class="form-group">
             <label for="nik">NIK / NPWP (16 Digit Angka)</label>
-            <input type="text" id="nik" placeholder="Contoh: 3603071234567890" maxlength="16" oninput="validateNIK(this)">
+            <input type="text" id="nik" placeholder="Contoh: 3603071234567890" maxlength="16" oninput="validateNIK(this)" inputmode="numeric" pattern="[0-9]*">
             <small id="nik-error">⚠️ NIK harus terdiri dari 16 digit angka!</small>
         </div>
         <div class="form-group">
@@ -198,7 +198,7 @@
         </div>
         <div class="form-group">
             <label for="tanggal">Tanggal Terdaftar</label>
-            <input type="text" id="tanggal" placeholder="Masukkan Tanggal Terdaftar" maxlength="10" oninput="formatTanggal(this)">
+            <input type="text" id="tanggal" placeholder="Masukkan Tanggal Terdaftar" maxlength="10" oninput="formatTanggal(this)" inputmode="numeric" pattern="[0-9]*">
             <small id="tanggal-error">⚠️ Format tanggal tidak valid! (cek hari, bulan, atau tahun)</small>
         </div>
 
